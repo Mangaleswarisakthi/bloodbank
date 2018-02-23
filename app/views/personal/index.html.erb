@@ -1,0 +1,48 @@
+<center><h1>Blood Bank</h1>
+<hr size="5" color="red">
+<br><br>
+
+<% if current_user.present? -%>
+<%= root_path %>
+<%= link_to "Sign out ", destroy_user_session_path, :method => :delete %> |
+
+
+<% else -%>
+<%= link_to_if(@current_user.nil?, "Admin Login", new_user_session_path) %>&nbsp;&nbsp;&nbsp;
+<% end %>
+
+
+
+<%= link_to 'New Donor', { controller: 'personal', action: 'new'} %>&nbsp;&nbsp;&nbsp;
+<%= link_to 'Blood Request', { controller: 'request', action: 'new'} %>
+<br><br><br>
+<table><tr><td>
+<table align="left"><tr><td>
+<font face="Arial" size="5" color="red"><center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Donors</center></font></td></tr>
+<% @personal.each do |personal|
+
+ im=personal.image;
+%>
+<tr>
+<td><%= image_tag(im, :size => "100x100") %>&nbsp;&nbsp;&nbsp;</td><td><%= personal.name %><br><%= personal.mobile %><br><%= personal.mid %><br><%= personal.try(:bdetail).try(:bg) %><br><%= link_to 'Edit', controller: 'personal', action: 'edit', :id => personal[:id] %>
+&nbsp;&nbsp;&nbsp;
+<% if current_user.present? -%><%= link_to "Delete", {controller: 'personal', action: 'delete'}, :method => :delete %> <% end %></td></tr>
+<% end %>
+
+</table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+<td>
+
+<table align="right"><tr><td>
+<font face="Arial" size="5" color="red"><center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Requested Person</center></font></td></tr>
+<% @request.each do |req|
+im=req.image;
+%>
+<tr><td><%= image_tag(im, :size => "100x100") %>&nbsp;&nbsp;&nbsp;</td>
+<td><%= req.name %><br><%= req.bg %><br><%= req.mid %><br><%= req.mobile %><br>Hospital Name :<%= req.hname %><br>City :<%= req.hcity %>
+<br><%= link_to 'Edit', controller: 'request', action: 'edit', :id => request[:id] %>&nbsp;&nbsp;&nbsp;
+<% if current_user.present? -%><%= link_to "Delete", {controller: 'request', action: 'delete'}, :method => :delete %><% end %>
+<% end %></td></tr>
+</table></td></tr></table>
+</center>
+

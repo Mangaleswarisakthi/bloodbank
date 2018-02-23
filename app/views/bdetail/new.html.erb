@@ -1,0 +1,54 @@
+<head>
+</head>
+<body >
+<center>
+<h1>Blood Details</h1>
+<hr size="4" color="red">
+<%= form_for @bdetail, url: {controller: :bdetail,action: :create} do |form| %>
+	     &nbsp;&nbsp;&nbsp;<font face="Arial" color="red"><%= "<div>#{@bdetail.errors.full_messages.first}</div>".html_safe if @bdetail.errors.any? %>   </font>
+	<div class="p">
+	<table style=" color="gray"><tr><td>
+		<%=form.label :Bloodid %>&nbsp;&nbsp;</td><td>
+	<%= form.text_field :bid, value: params[:personal_id] %>
+</td></tr>
+	<tr><td>
+
+		<%= form.label :BloodGroup %>&nbsp;&nbsp;</td><td>
+		<%= form.text_field :bg %></td></tr>
+
+	<tr><td>
+		<%= form.label :Age %>&nbsp;&nbsp;</td>
+		<td><%= form.text_field :age %></td><td><h6>Age Must Be Greater 20</h6></td></tr>
+	<tr><td>
+		<%= form.label :Weight %>&nbsp;&nbsp;</td>
+		<td><%= form.text_field :wait %></td><td><h6>Wait Must Be Greater 50</h6></td></tr>
+<tr><td>
+		<%= form.label :Hemoglobin %>&nbsp;&nbsp;</td>
+		<td><%= form.text_field :hemo%></td><td><h6>Hemoglobin Must Be Greater 10</h6></td></tr>
+<tr><td>
+		<%= form.label :LastDate %>&nbsp;&nbsp;</td>
+		<td><%= form.text_field :ldate, :value => Time.now.strftime('%y-%m-%d') %></td></tr>
+<tr><td>
+
+
+ 	
+
+
+<%= form.label :Disease%></td><td>
+
+
+<%= check_box_tag 'check_value', 1 %> hiv<br>
+<%= check_box_tag 'check_value', 2 %> diabetes <br>
+<%= check_box_tag 'check_value', 3 %> malaria</td></tr>
+</table>
+	
+	<p>	
+		<%= link_to 'Back', { controller: 'bdetail', action: 'index'} %>
+		<%= form.submit :Add %>
+	</p>
+</div>
+<% end %>
+</center>
+</body>
+
+ 

@@ -1,0 +1,2 @@
+module BdetailHelper
+end

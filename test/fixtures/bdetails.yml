@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bid: 1
+  bg: MyString
+  age: 1
+  wait: 1
+  hemo: 1
+  ldate: 2018-02-22
+
+two:
+  bid: 1
+  bg: MyString
+  age: 1
+  wait: 1
+  hemo: 1
+  ldate: 2018-02-22

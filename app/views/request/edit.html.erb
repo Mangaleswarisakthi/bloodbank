@@ -1,0 +1,46 @@
+<head>
+</head>
+<body >
+<center>
+<h1>Requested Person Details</h1>
+
+<%= form_for @request, url: {action: :update, multipart: true} do |form| %>
+	   &nbsp;&nbsp;&nbsp;<font face="Arial" color="red"><%= "<div>#{@request.errors.full_messages.first}</div>".html_safe if @request.errors.any? %>   </font>
+	
+	<div class="p">
+	<table style=" color="gray"><tr><td>
+		<%=form.label :Name %>&nbsp;&nbsp;</td><td>
+		<%=form.text_field :name %></td></tr>
+	<tr><td>
+		<%= form.label :Bloodgroup %>&nbsp;&nbsp;</td><td>
+		<%= form.select :bg, %w{ AB+ AB- O+ O- A1- B+ B- A+ A- A1+  }, {:prompt => "Blood Group..."} %></td></tr>
+	<tr><td>
+		<%= form.label :Address %>&nbsp;&nbsp;</td>
+		<td><%= form.text_field :address %></td></tr>
+	<tr><td>
+		<%= form.label :MobileNumber%>&nbsp;&nbsp;</td>
+		<td><%= form.text_field :mobile %></td></tr>
+<tr><td>
+		<%= form.label :Mobileid %>&nbsp;&nbsp;</td>
+		<td><%= form.email_field :mid%></td></tr>
+<tr><td>
+		<%= form.label :HospitalName %>&nbsp;&nbsp;</td>
+		<td><%= form.text_field :hname %></td></tr>
+<tr><td>
+		<%= form.label :HospitalCity %>&nbsp;&nbsp;</td>
+		<td><%= form.text_field :hcity %></td></tr>
+
+<tr><td><%= form.label :Images %></td><td> <%= form.file_field :image %></td></tr>
+
+	</table>
+
+	<p>	
+		<%= link_to 'Back', { controller: 'personal', action: 'index'} %>
+		<%= form.submit :Update %>
+	</p>
+</div>
+<% end %>
+</center>
+</body>
+
+ 
