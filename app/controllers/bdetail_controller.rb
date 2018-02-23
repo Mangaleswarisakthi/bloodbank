@@ -10,18 +10,11 @@ class BdetailController < ApplicationController
   def show
   end
 def edit
-	@bdetail = Bdetail.find_by id:params[:id]
+	
 end
 
   def update
-	@bdetail = Bdetail.find_by id:params[:id]
-	if @bdetail.update_attributes(add_params)
-		flash[:notice] = 'Your Details Successfully Updated!'
-		redirect_to root_path
-	else
-		flash[:error] = 'Sorry Updation is Failed!'
-		render :update
-	end
+	
 
   end
 def create

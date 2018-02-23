@@ -4,7 +4,7 @@
 <center>
 <h1>Requested Person Details</h1>
 
-<%= form_for @request, url: {action: :update, multipart: true} do |form| %>
+<%= form_for @request do |form| %>
 	   &nbsp;&nbsp;&nbsp;<font face="Arial" color="red"><%= "<div>#{@request.errors.full_messages.first}</div>".html_safe if @request.errors.any? %>   </font>
 	
 	<div class="p">

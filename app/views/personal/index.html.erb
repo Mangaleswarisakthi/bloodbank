@@ -26,7 +26,7 @@
 <tr>
 <td><%= image_tag(im, :size => "100x100") %>&nbsp;&nbsp;&nbsp;</td><td><%= personal.name %><br><%= personal.mobile %><br><%= personal.mid %><br><%= personal.try(:bdetail).try(:bg) %><br><%= link_to 'Edit', controller: 'personal', action: 'edit', :id => personal[:id] %>
 &nbsp;&nbsp;&nbsp;
-<% if current_user.present? -%><%= link_to "Delete", {controller: 'personal', action: 'delete'}, :method => :delete %> <% end %></td></tr>
+<% if current_user.present? -%><%= link_to 'Delete', controller: 'personal', action: 'delete', :id => personal[:id] %> <% end %></td></tr>
 <% end %>
 
 </table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -40,9 +40,9 @@ im=req.image;
 %>
 <tr><td><%= image_tag(im, :size => "100x100") %>&nbsp;&nbsp;&nbsp;</td>
 <td><%= req.name %><br><%= req.bg %><br><%= req.mid %><br><%= req.mobile %><br>Hospital Name :<%= req.hname %><br>City :<%= req.hcity %>
-<br><%= link_to 'Edit', controller: 'request', action: 'edit', :id => request[:id] %>&nbsp;&nbsp;&nbsp;
-<% if current_user.present? -%><%= link_to "Delete", {controller: 'request', action: 'delete'}, :method => :delete %><% end %>
-<% end %></td></tr>
+<br><%= link_to 'Edit', controller: 'request', action: 'edit', :id => req[:id] %>&nbsp;&nbsp;&nbsp;
+<% if current_user.present? -%><%= link_to 'Delete', "/request/#{req.id}", method: :delete %><% end %></td></tr>
+<% end %>
 </table></td></tr></table>
 </center>
 

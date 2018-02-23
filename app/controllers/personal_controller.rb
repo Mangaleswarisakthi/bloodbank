@@ -30,6 +30,14 @@ def edit
 	@personal = Personal.find_by id:params[:id]
 end
 def delete
+	@personal=Personal.find(params[:id])
+	flash[:alert] = 'not deleted!'
+	if @personal.delete
+		flash[:alert] = 'Deleted'
+	end		
+	
+	@personal=Personal.all
+	render:index
 	
 end
 

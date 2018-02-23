@@ -4,17 +4,19 @@ Rails.application.routes.draw do
   get 'request/new'
 
   get 'bdetail/index'
+get 'request/destroy'
 
   get 'bdetail/create'
 post 'bdetail/create'
 
   get 'bdetail/show'
-get 'request/delete'
+
 get 'request/edit'
 get 'request/update'
   get 'bdetail/update'
 
   get 'bdetail/destroy'
+
 
   get 'personal/index'
 get 'request/create'
@@ -37,6 +39,7 @@ post 'personal/create'
 	#get 'bdetail/new'
 #end
 #end
+resources :request
 resources :personal
  get "/personal/:personal_id/bdetail/new", to: "bdetail#new"
 #end
