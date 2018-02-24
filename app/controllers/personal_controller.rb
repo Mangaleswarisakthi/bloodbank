@@ -32,8 +32,9 @@ end
 def delete
 	@personal=Personal.find(params[:id])
 	flash[:alert] = 'not deleted!'
-	if @personal.delete
+	if @personal.destroy
 		flash[:alert] = 'Deleted'
+		
 	end		
 	
 	@personal=Personal.all

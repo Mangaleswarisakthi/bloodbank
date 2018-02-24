@@ -1,5 +1,5 @@
 class Personal < ApplicationRecord
-has_one :bdetail, foreign_key: :bid
+has_one :bdetail, foreign_key: :bid, dependent: :destroy
 	validates :name, presence: true 
 	validates :db, presence: true 
 	validates :gender, presence: true

@@ -35,6 +35,7 @@
 
 <table align="right"><tr><td>
 <font face="Arial" size="5" color="red"><center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Requested Person</center></font></td></tr>
+<% if @request.present? %>
 <% @request.each do |req|
 im=req.image;
 %>
@@ -42,7 +43,7 @@ im=req.image;
 <td><%= req.name %><br><%= req.bg %><br><%= req.mid %><br><%= req.mobile %><br>Hospital Name :<%= req.hname %><br>City :<%= req.hcity %>
 <br><%= link_to 'Edit', controller: 'request', action: 'edit', :id => req[:id] %>&nbsp;&nbsp;&nbsp;
 <% if current_user.present? -%><%= link_to 'Delete', "/request/#{req.id}", method: :delete %><% end %></td></tr>
-<% end %>
+<% end %><% end %>
 </table></td></tr></table>
 </center>
 
