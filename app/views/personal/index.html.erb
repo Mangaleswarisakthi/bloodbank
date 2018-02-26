@@ -1,7 +1,7 @@
-<center><h1>Blood Bank</h1>
+<center><%= image_tag("blood.jpg", :width => "50", :height => "50") %><h1>Blood Bank</h1>
 <hr size="5" color="red">
 <br><br>
-
+<header id="header" class="header_2"> 
 <% if current_user.present? -%>
 <%= root_path %>
 <%= link_to "Sign out ", destroy_user_session_path, :method => :delete %> |
@@ -16,7 +16,9 @@
 <%= link_to 'New Donor', { controller: 'personal', action: 'new'} %>&nbsp;&nbsp;&nbsp;
 <%= link_to 'Blood Request', { controller: 'request', action: 'new'} %>
 <br><br><br>
+</header>
 <table><tr><td>
+
 <table align="left"><tr><td>
 <font face="Arial" size="5" color="red"><center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Donors</center></font></td></tr>
 <% @personal.each do |personal|
@@ -28,13 +30,11 @@
 &nbsp;&nbsp;&nbsp;
 <% if current_user.present? -%><%= link_to 'Delete', controller: 'personal', action: 'delete', :id => personal[:id] %> <% end %></td></tr>
 <% end %>
-
-</table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</table></td>
 
 <td>
-
-<table align="right"><tr><td>
-<font face="Arial" size="5" color="red"><center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Requested Person</center></font></td></tr>
+<table align="center"><tr><td>
+<font face="Arial" size="5" color="red"><center>Requested Person</center></font></td></tr>
 <% if @request.present? %>
 <% @request.each do |req|
 im=req.image;
@@ -44,6 +44,28 @@ im=req.image;
 <br><%= link_to 'Edit', controller: 'request', action: 'edit', :id => req[:id] %>&nbsp;&nbsp;&nbsp;
 <% if current_user.present? -%><%= link_to 'Delete', "/request/#{req.id}", method: :delete %><% end %></td></tr>
 <% end %><% end %>
-</table></td></tr></table>
+</table></td>
+
+<td><table align="right"><tr><td><font face="Arial" size="5" color="red"><center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search Donors</center></font></td></tr>
+<%= form_tag(root_path, method: :get, action: :index) do %>
+<tr><td><h3>Blood Group</h3></td><td>   <%= select_tag :bg, options_for_select(@bdetail.map {|t| [ t.bg, t.bg ]}.uniq,params[:bg]), include_blank: "Blood Group"  %>  </td></td></tr>
+<tr><td><h3>Location</h3></td>    <td>    <%= select_tag :city, options_for_select(@personal.map {|t| [ t.city, t.city ]}.uniq,params[:address]), include_blank: "Location" %>     </td><tr><td><center><%= submit_tag "Search", data: { disable_with: "Please wait.." } %></td></center></tr>
+<% end %></table>
+
+</td></tr></table><br>
+
+<center>
+<% if @search.present? %>
+<table><tr><td><font face="Arial" color="blue" size="3">Name</font></td><td><font face="Arial" color="blue" size="3">Mobile</font></td></tr>
+<% @search.each do |i| %>
+<tr><td><%= i.name %></td><td><%= i.mobile %></td></tr>
+<% end %>
+</table>
+<% else %>
+<h3>Sorry Donors not Available for This place</h3>
+<% end %>
+</center>
+</center>
+</center>
 </center>
 

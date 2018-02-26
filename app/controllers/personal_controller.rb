@@ -1,14 +1,17 @@
 class PersonalController < ApplicationController
 before_action :is_admin?, only: [:destroy]
   def index
-	@personal=Personal.all
+	 @personal=Personal.all
 	@bdetail=Bdetail.all
 	@request=Request.all
+   if params[:bg].present? && params[:city].present?
+      @search =Personal.joins(:bdetail).where('bdetails.bg LIKE ? AND personals.city LIKE ?', "%#{params[:bg]}%","%#{params[:city]}%")
+   end
+
   end
 
   def show
 	@personal=Personal.all
-	@bdetail=Bdetail.all
 	@request=Request.all
   end
 
