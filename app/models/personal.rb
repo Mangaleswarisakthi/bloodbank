@@ -1,4 +1,8 @@
 class Personal < ApplicationRecord
+has_one :bdetail, foreign_key: :bid
+
+  accepts_nested_attributes_for :bdetail, allow_destroy: true
+
 has_one :bdetail, foreign_key: :bid, dependent: :destroy
 	validates :name, presence: true 
 	validates :db, presence: true 

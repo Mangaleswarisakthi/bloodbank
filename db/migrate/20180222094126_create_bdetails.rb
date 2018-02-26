@@ -7,6 +7,7 @@ class CreateBdetails < ActiveRecord::Migration[5.1]
       t.integer :wait
       t.integer :hemo
       t.date :ldate
+	
 
       t.timestamps
     end

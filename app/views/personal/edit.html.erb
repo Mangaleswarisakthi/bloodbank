@@ -3,7 +3,7 @@
 <body >
 <center>
 <h1>Personal Details</h1>
-
+<hr size="4" color="red">
 <%= form_for @personal, url: {action: :update, multipart: true} do |form| %>
 	   &nbsp;&nbsp;&nbsp;<font face="Arial" color="red"><%= "<div>#{@personal.errors.full_messages.first}</div>".html_safe if @personal.errors.any? %>   </font>
 	
@@ -33,10 +33,61 @@
 <tr><td><%= form.label :Images %></td><td> <%= form.file_field :image %></td></tr>
 
 	</table>
+	
+
+
+<h1>Blood Details</h1>
+<hr size="4" color="red">
+<%= form.fields_for :bdetail do |f| %>
+	 
+	<div class="p">
+	<table style=" color="gray">
+
+	<tr><td>
+
+		<%= f.label :BloodGroup %>&nbsp;&nbsp;</td><td>
+		<%= f.text_field :bg %></td></tr>
+
+	<tr><td>
+		<%= f.label :Age %>&nbsp;&nbsp;</td>
+		<td><%= f.text_field :age %></td><td><h6>Age Must Be Greater 20</h6></td></tr>
+	<tr><td>
+		<%= f.label :Weight %>&nbsp;&nbsp;</td>
+		<td><%= f.text_field :wait %></td><td><h6>Wait Must Be Greater 50</h6></td></tr>
+<tr><td>
+		<%= f.label :Hemoglobin %>&nbsp;&nbsp;</td>
+		<td><%= f.text_field :hemo%></td><td><h6>Hemoglobin Must Be Greater 10</h6></td></tr>
+<tr><td>
+		<%= f.label :LastDate %>&nbsp;&nbsp;</td>
+		<td><%= f.text_field :ldate, :value => Time.now.strftime('%y-%m-%d') %></td></tr>
+<tr><td>
+
+
+ 	
+
+
+<%= f.label :Disease%></td><td>
+
+
+<%= check_box_tag 'check_value', 1 %> hiv<br>
+<%= check_box_tag 'check_value', 2 %> diabetes <br>
+<%= check_box_tag 'check_value', 3 %> malaria</td></tr>
+</table>
+	
+	<!--<p>	
+		<%= link_to 'Back', { controller: 'bdetail', action: 'index'} %>
+		<%= form.submit :Add %>
+	</p> -->
+</div>
+<% end %>
+
+
+
+
 
 	<p>	
 		<%= link_to 'Back', { controller: 'personal', action: 'index'} %>
-		<%= form.submit :update %>
+		<%= form.submit :Update %>
 	</p>
 </div>
 <% end %>
