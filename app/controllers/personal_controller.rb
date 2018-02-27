@@ -29,7 +29,7 @@ def create
 	else 
 		if @personal.save
 			flash[:notice] = 'Your Details Successfully Added!'
-			redirect_to "/personal/new"	
+			redirect_to root_path	
 		else
 			render :new
 		end
